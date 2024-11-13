@@ -1,0 +1,9 @@
+# File: MyCustomModule.psm1
+
+# Example module with custom functions
+function Get-Greeting {
+    param ($Name)
+    Write-Output "Hello, $Name!"
+}
+
+Export-ModuleMember -Function Get-Greeting
