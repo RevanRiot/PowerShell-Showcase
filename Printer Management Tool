@@ -1,0 +1,5 @@
+# File: PrinterManager.ps1
+
+# Add a network printer
+Add-Printer -Name "OfficePrinter" -DriverName "HP Universal Printing PCL 6" -PortName "IP_192.168.1.100"
+Write-Host "Printer added successfully."
