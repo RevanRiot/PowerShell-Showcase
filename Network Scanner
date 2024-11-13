@@ -1,0 +1,10 @@
+# File: NetworkScanner.ps1
+
+# Scan the network for active devices
+$subnet = "192.168.1."
+1..254 | ForEach-Object {
+    $ip = "$subnet$_"
+    if (Test-Connection -ComputerName $ip -Count 1 -Quiet) {
+        Write-Host "Active: $ip"
+    }
+}
