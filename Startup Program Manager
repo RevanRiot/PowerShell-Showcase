@@ -1,0 +1,4 @@
+# File: StartupProgramManager.ps1
+
+# List all startup programs
+Get-CimInstance -Namespace "Root\Startup" | Format-Table Name, Command
