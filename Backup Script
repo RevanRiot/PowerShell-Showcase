@@ -1,0 +1,14 @@
+# File: BackupFiles.ps1
+
+# Script to back up files from source to destination folder
+param (
+    [string]$SourcePath = "C:\Source",
+    [string]$BackupPath = "C:\Backup"
+)
+
+if (!(Test-Path $BackupPath)) {
+    New-Item -ItemType Directory -Path $BackupPath
+}
+
+Copy-Item -Path $SourcePath\* -Destination $BackupPath -Recurse -Force
+Write-Host "Backup completed successfully!"
