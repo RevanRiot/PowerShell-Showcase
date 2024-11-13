@@ -1,0 +1,13 @@
+# File: Create_AD_Users.ps1
+
+# Import CSV file with user details and create AD users
+Import-Module ActiveDirectory
+
+$users = Import-Csv -Path "users.csv"
+foreach ($user in $users) {
+    New-ADUser -Name $user.Name -GivenName $user.FirstName -Surname $user.LastName `
+        -SamAccountName $user.Username -UserPrincipalName "$($user.Username)@example.com" `
+        -Path "OU=Users,DC=example,DC=com" -AccountPassword (ConvertTo-SecureString "Password123" -AsPlainText -Force) `
+        -Enabled $true
+    Write-Host "Created user: $($user.Name)"
+}
