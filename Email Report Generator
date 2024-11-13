@@ -1,0 +1,9 @@
+# File: EmailReport.ps1
+
+# Send a system report via email
+$smtpServer = "smtp.mail.com"
+$smtpFrom = "admin@mail.com"
+$smtpTo = "user@mail.com"
+$subject = "System Report"
+$body = "System is running smoothly."
+Send-MailMessage -From $smtpFrom -To $smtpTo -Subject $subject -Body $body -SmtpServer $smtpServer
