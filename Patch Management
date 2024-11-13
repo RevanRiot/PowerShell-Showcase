@@ -1,0 +1,4 @@
+# File: PatchManager.ps1
+
+# Install Windows Updates
+Install-WindowsUpdate -AcceptAll -IgnoreReboot
