@@ -1,0 +1,5 @@
+# File: AzureResourceManager.ps1
+
+# Manage Azure resources
+Connect-AzAccount
+New-AzResourceGroup -Name "TestResourceGroup" -Location "EastUS"
