@@ -1,0 +1,4 @@
+# File: FirewallConfigurator.ps1
+
+# Add a rule to allow traffic on port 8080
+New-NetFirewallRule -DisplayName "AllowPort8080" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 8080
