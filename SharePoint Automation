@@ -1,0 +1,5 @@
+# File: SharePointAutomation.ps1
+
+# Create a SharePoint site
+Connect-SPOService -Url "https://yourtenant-admin.sharepoint.com"
+New-SPOSite -Url "https://yourtenant.sharepoint.com/sites/NewSite" -Owner "user@domain.com" -StorageQuota 1024
