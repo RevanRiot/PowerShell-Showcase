@@ -1,0 +1,8 @@
+# File: SoftwareInventory.ps1
+
+# List installed software on a local or remote machine
+$computer = $env:COMPUTERNAME
+$software = Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" |
+    Select-Object DisplayName, DisplayVersion, Publisher
+
+$software | Format-Table -AutoSize
