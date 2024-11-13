@@ -1,0 +1,13 @@
+# File: SystemHealthMonitor.ps1
+
+# Monitor system CPU, memory, and disk usage
+while ($true) {
+    $cpu = (Get-WmiObject Win32_Processor).LoadPercentage
+    $memory = Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object @{n="UsedMemory";e={[math]::Round(($_.TotalVisibleMemorySize - $_.FreePhysicalMemory)/1MB, 2)}}, @{n="TotalMemory";e={[math]::Round($_.TotalVisibleMemorySize/1MB, 2)}}
+    $disk = Get-PSDrive -PSProvider FileSystem | Select-Object Name, @{n="FreeSpace(GB)";e={[math]::Round($_.Free/1GB, 2)}}, @{n="UsedSpace(GB)";e={[math]::Round(($_.Used)/1GB, 2)}}
+    
+    Write-Host "CPU Usage: $cpu%"
+    Write-Host "Memory Usage: $($memory.UsedMemory) MB / $($memory.TotalMemory) MB"
+    $disk | ForEach-Object { Write-Host "Drive $($_.Name): Free $($_.FreeSpace(GB)) GB, Used $($_.UsedSpace(GB)) GB" }
+    Start-Sleep -Seconds 10
+}
