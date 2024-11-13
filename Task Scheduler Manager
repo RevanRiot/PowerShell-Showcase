@@ -1,0 +1,7 @@
+# File: TaskSchedulerManager.ps1
+
+# Create a scheduled task
+$action = New-ScheduledTaskAction -Execute "notepad.exe"
+$trigger = New-ScheduledTaskTrigger -Daily -At 9am
+Register-ScheduledTask -TaskName "OpenNotepadDaily" -Action $action -Trigger $trigger
+Write-Host "Scheduled task created successfully!"
