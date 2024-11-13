@@ -1,0 +1,4 @@
+# File: FilePermissionsAuditor.ps1
+
+# Audit folder permissions
+Get-Acl -Path "C:\SensitiveFolder" | Format-List
