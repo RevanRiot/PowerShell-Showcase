@@ -1,0 +1,9 @@
+# File: ServiceStatusChecker.ps1
+
+# Check the status of critical services
+$services = @("Spooler", "W32Time", "WinRM")
+
+foreach ($service in $services) {
+    $status = Get-Service -Name $service
+    Write-Host "$($status.DisplayName): $($status.Status)"
+}
