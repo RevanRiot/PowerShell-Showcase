@@ -1,0 +1,10 @@
+# File: ParseLogs.ps1
+
+# Parse a log file to find error messages
+param (
+    [string]$LogFilePath = "C:\Logs\log.txt",
+    [string]$OutputPath = "C:\Logs\ErrorReport.txt"
+)
+
+Get-Content $LogFilePath | Where-Object { $_ -match "ERROR" } | Out-File $OutputPath
+Write-Host "Error messages extracted to $OutputPath"
